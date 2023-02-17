@@ -1,7 +1,15 @@
+import { signOut } from "firebase/auth";
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, NavLink } from "react-router-dom";
+import auth from "../Firebase.init";
+import Loading from "./Loading";
 
 const Navbar = () => {
+  const [user, loading] = useAuthState(auth);
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <div>
       {/* pc view */}
@@ -42,26 +50,27 @@ const Navbar = () => {
           </NavLink>
         </div>
         <div className="flex-auto flex justify-end items-center gap-4">
-          <NavLink
-            to={"/signIn"}
-            className={({ isActive }) =>
-              isActive
-                ? "nav text-orange-500"
-                : "nav hover:text-orange-500 duration-300"
-            }
-          >
-            Sign In
-          </NavLink>
-          <NavLink
-            to={"/signOut"}
-            className={({ isActive }) =>
-              isActive
-                ? " text-red-500 btn btn-outline btn-error"
-                : " hover:text-red-500 duration-300 btn btn-outline btn-error"
-            }
-          >
-            Sign Out
-          </NavLink>
+          {!user ? (
+            <NavLink
+              to={"/signIn"}
+              className={({ isActive }) =>
+                isActive
+                  ? "nav text-orange-500"
+                  : "nav hover:text-orange-500 duration-300"
+              }
+            >
+              Sign In
+            </NavLink>
+          ) : (
+            <div
+              onClick={() => {
+                signOut(auth);
+              }}
+              className="hover:text-red-500 duration-300 btn btn-outline btn-error"
+            >
+              Sign Out
+            </div>
+          )}
         </div>
       </div>
       {/* tab and mobile view */}

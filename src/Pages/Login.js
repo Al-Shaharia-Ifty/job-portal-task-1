@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import ResetPasswordModal from "../Components/ResetPasswordModal";
@@ -7,6 +10,7 @@ import auth from "../Firebase.init";
 import Loading from "../Shared/Loading";
 
 const Login = () => {
+  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
   const [modal, setModal] = useState(false);
@@ -19,20 +23,22 @@ const Login = () => {
   let signInErrorMessage;
   const navigate = useNavigate();
   const location = useLocation();
-  let from = location.state?.from?.pathname || "/dashboard";
+  let from = location.state?.from?.pathname || "/";
 
   useEffect(() => {
-    if (user) {
+    if (user || gUser) {
       navigate(from, { replace: true });
     }
-  }, [user, from, navigate]);
+  }, [user, gUser, from, navigate]);
 
-  if (loading) {
+  if (loading || gLoading) {
     return <Loading />;
   }
 
-  if (error) {
-    signInErrorMessage = <p className="text-red-500 mb-2">{error?.message}</p>;
+  if (error || gError) {
+    signInErrorMessage = (
+      <p className="text-red-500 mb-2">{error?.message || gError?.message}</p>
+    );
   }
 
   const onSubmit = (data) => {
@@ -40,7 +46,10 @@ const Login = () => {
   };
   return (
     <div>
-      <div className="flex min-h-screen justify-center items-center">
+      <div
+        data-aos="zoom-in"
+        className="flex min-h-screen justify-center items-center"
+      >
         <div className="card  max-w-md bg-base-100 shadow-xl">
           <div className="card-body border-2 rounded-lg">
             <h2 className="text-center text-3xl">Login</h2>
@@ -119,7 +128,6 @@ const Login = () => {
                 type="submit"
               />
             </form>
-            <div className="divider"></div>
             <p>
               New to JobFinder{" "}
               <Link to="/signUp" className="text-blue-500">
@@ -136,6 +144,13 @@ const Login = () => {
                 Reset Password
               </label>
             </p>
+            <div className="divider">OR</div>
+            <button
+              onClick={() => signInWithGoogle()}
+              className="btn btn-primary btn-outline w-full"
+            >
+              Sign Up with google
+            </button>
           </div>
         </div>
       </div>
