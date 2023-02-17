@@ -28,3 +28,14 @@
 .headerImg {
   background-image: url("/src/Assets/header1.jpg");
 }
+
+/*  */
+main {
+  max-width: 960px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+section {
+  margin-bottom: 2rem;
+}
