@@ -25,3 +25,6 @@
 .nav:hover::after {
   width: 100%;
 }
+.headerImg {
+  background-image: url("/src/Assets/header1.jpg");
+}

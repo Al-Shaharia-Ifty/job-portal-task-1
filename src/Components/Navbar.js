@@ -6,9 +6,9 @@ const Navbar = () => {
     <div>
       {/* pc view */}
       <div className="p-4 hidden lg:flex">
-        <div className="flex-1 flex items-center gap-4">
+        <div className="flex-auto flex items-center gap-4">
           <Link>
-            <h1 className="text-3xl font-semibold">CareerFinderPlus</h1>
+            <h1 className="text-3xl font-semibold">JobFinder</h1>
           </Link>
           <NavLink
             to={"/"}
