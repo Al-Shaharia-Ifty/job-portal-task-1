@@ -13,12 +13,18 @@ const Fresher = () => {
   }
   return (
     <div>
-      <h2 className="lg:text-3xl text-2xl font-semibold text-center mt-14 md:mt-0">
+      <h2
+        data-aos="flip-down"
+        className="lg:text-3xl text-2xl font-semibold text-center mt-14 md:mt-0"
+      >
         Fresher's Jobs
       </h2>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 mx-10 lg:mx-20 my-4">
         {jobs.map((j) => (
-          <div className="hover:-translate-y-1 hover:shadow-xl duration-300 border-2 border-orange-300 rounded-lg p-4 relative">
+          <div
+            data-aos="zoom-out-down"
+            className="hover:-translate-y-1 hover:shadow-xl duration-300 border-2 rounded-lg p-4 relative"
+          >
             <div className="flex items-center">
               <img className="w-20" src={j.img} alt="" />
               <h2 className="text-xl font-bold ml-4">{j.jobTitle}</h2>
@@ -48,7 +54,7 @@ const Fresher = () => {
           </div>
         ))}
       </div>
-      <div className="flex justify-center">
+      <div data-aos="zoom-in" className="flex justify-center">
         <button className="btn btn-info">See All Jobs</button>
       </div>
     </div>

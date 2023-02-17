@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <div>
       {/* pc view */}
-      <div className="p-4 hidden lg:flex">
+      <div data-aos="fade-down" className="p-4 hidden lg:flex">
         <div className="flex-auto flex items-center gap-4">
           <Link>
             <h1 className="text-3xl font-semibold">JobFinder</h1>
@@ -65,7 +65,10 @@ const Navbar = () => {
         </div>
       </div>
       {/* tab and mobile view */}
-      <div className="lg:hidden p-4 flex justify-between items-center">
+      <div
+        data-aos="fade-down"
+        className="lg:hidden p-4 flex justify-between items-center"
+      >
         <div>
           <Link>
             <h1 className="text-3xl font-semibold">CareerFinderPlus</h1>
