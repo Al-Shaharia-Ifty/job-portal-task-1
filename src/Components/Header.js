@@ -11,7 +11,10 @@ const Header = () => {
         <div className="form-control w-full md:w-72 lg:w-80 text-black font-bold md:ml-20 absolute md:bottom-12 lg:bottom-28">
           <label className="label justify-evenly cursor-pointer bg-white rounded-full border-4 border-white p-2">
             <span className="lg:text-xl text-center">Job Seeker</span>
-            <input type="checkbox" className="toggle toggle-success" />
+            <input
+              type="checkbox"
+              className="toggle bg-orange-500 border-orange-500"
+            />
             <span className="lg:text-xl text-center">Job Poster</span>
           </label>
         </div>

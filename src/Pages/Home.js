@@ -1,4 +1,5 @@
 import React from "react";
+import Experienced from "../Components/Experienced";
 import Fresher from "../Components/Fresher";
 import Header from "../Components/Header";
 
@@ -7,6 +8,7 @@ const Home = () => {
     <div>
       <Header />
       <Fresher />
+      <Experienced />
     </div>
   );
 };
