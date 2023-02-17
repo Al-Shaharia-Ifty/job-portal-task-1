@@ -11,7 +11,7 @@ const Navbar = () => {
             <h1 className="text-3xl font-semibold">JobFinder</h1>
           </Link>
           <NavLink
-            to={"/"}
+            to={"/home"}
             className={({ isActive }) =>
               isActive
                 ? "nav text-orange-500"
@@ -65,12 +65,9 @@ const Navbar = () => {
         </div>
       </div>
       {/* tab and mobile view */}
-      <div
-        data-aos="fade-down"
-        className="lg:hidden p-4 flex justify-between items-center"
-      >
+      <div className="lg:hidden p-4 flex justify-between items-center">
         <div>
-          <Link>
+          <Link to={"/home"}>
             <h1 className="text-3xl font-semibold">CareerFinderPlus</h1>
           </Link>
         </div>
@@ -85,11 +82,11 @@ const Navbar = () => {
             >
               <li>
                 <NavLink
-                  to={"/"}
+                  to={"/home"}
                   className={({ isActive }) =>
                     isActive
-                      ? "nav bg-transparent text-orange-500"
-                      : "nav bg-transparent hover:text-orange-500 duration-300"
+                      ? "nav text-orange-500"
+                      : "nav hover:text-orange-500 duration-300"
                   }
                 >
                   Home
