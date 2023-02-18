@@ -4,7 +4,7 @@ import Loading from "../Shared/Loading";
 
 const Experienced = () => {
   const [jobs, setJobs] = useState(false);
-  fetch("http://localhost:5000/experiencedJobs")
+  fetch("https://jobfinder-server.vercel.app/experiencedJobs")
     .then((res) => res.json())
     .then((data) => setJobs(data));
 
@@ -49,7 +49,9 @@ const Experienced = () => {
               )}
             </p>
             <div className="absolute bottom-4 right-4">
-              <Link className="btn bg-orange-600">View More</Link>
+              <Link to={`/experienced/${j.id}`} className="btn bg-orange-600">
+                View More
+              </Link>
             </div>
           </div>
         ))}

@@ -15,7 +15,7 @@ const Navbar = () => {
       {/* pc view */}
       <div data-aos="fade-down" className="p-4 hidden lg:flex">
         <div className="flex-auto flex items-center gap-4">
-          <Link>
+          <Link to={"/"}>
             <h1 className="text-3xl font-semibold">JobFinder</h1>
           </Link>
           <NavLink
